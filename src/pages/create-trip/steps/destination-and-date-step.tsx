@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css'
 import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 interface DestinationAndDateStepProps {
   isGuestsInputOpen: boolean;
@@ -70,7 +71,13 @@ export function DestinationAndDateStep({
               </div>
             </div>
             
-            <DayPicker mode="range" selected={eventStartAndEndDates} onSelect={setEventStartAndEndDates} />
+            <DayPicker 
+              mode="range" 
+              selected={eventStartAndEndDates} 
+              onSelect={setEventStartAndEndDates}
+              disabled={{ before: new Date() }}
+              locale={ptBR}
+            />
           </div>
         </div>
       )}
